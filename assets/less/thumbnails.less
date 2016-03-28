@@ -1,0 +1,1127 @@
+//
+// Thumbnails
+// --------------------------------------------------
+
+.section-label {
+  display: block;
+  margin-bottom: 10px;
+  > a.section-label-title-link {
+    color: @gray-base;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 3px;
+    font-family: Arial;
+    font-size: 14px;
+  }
+  > .section-label-hr {
+    display: block;
+    height: 3px;
+    text-align: left;
+    background: #dcdddf;
+    > .section-label-hr-red {
+      width: 50px;
+      height: 3px;
+      background-color: @brand-base;
+    }
+  }
+  > a.section-label-title-link:hover {
+    text-decoration: none;
+  }
+}
+
+.newsline-day-label {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  > .newsline-day-label-title {
+    color: @gray-base;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 14px;
+  }
+}
+
+// Mixin and adjust the regular image class
+.thumbnail {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 0px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+  > .link {
+    display: block;
+  }
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  >a> .attachments {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+    padding: 7px 5px 7px 10px;
+    color: #fff;
+    > i {
+      margin-right: 5px;
+    }
+  }
+
+  >a> .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.2);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(135,135,135,0) 47%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding;
+    color: @thumbnail-caption-color;
+    position: absolute;
+    bottom: 0px;
+    font-weight: 600;
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.thumbnail-large {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 0px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+
+  > .link {
+    display: block;
+    text-decoration: none;
+  }
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > a > .attachments {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+    padding: 7px 5px 7px 10px;
+    color: #fff;
+    > i {
+      margin-right: 5px;
+    }
+  }
+
+  > a > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.2);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(135,135,135,0) 47%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding-extra-large;
+    color: @thumbnail-caption-color;
+    position: absolute;
+    bottom: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.thumbnail-extra-large {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 0px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+  > .link {
+    display: block;
+    text-decoration: none;
+  }
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  >a> .attachments {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+    padding: 7px 5px 7px 10px;
+    color: #fff;
+    > i {
+      margin-right: 5px;
+    }
+  }
+
+  >a> .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.2);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(135,135,135,0) 47%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding-extra-large;
+    color: @thumbnail-caption-color;
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    font-weight: 600;
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.thumbnail-circle {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-circle-bg;
+  border: 2px solid @thumbnail-circle-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+  > .link {
+    display: block;
+    text-decoration: none;
+  }
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 500px;
+    width: 160px;
+    height: 160px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    border: 3px solid @brand-base;
+    overflow: hidden;
+  }
+
+  >a> .attachments {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+    padding: 7px 5px 7px 10px;
+    color: #fff;
+    > i {
+      margin-right: 5px;
+    }
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding-extra-large;
+    color: @thumbnail-circle-caption-color;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      color: #fff;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.thumbnail-circle-horizontal {
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-circle-bg;
+  border: 2px solid @thumbnail-circle-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+  > .link {
+    display: table;
+    text-decoration: none;
+    > img,
+    a> img {
+      &:extend(.img-responsive);
+      margin-left: 24px;
+      border-radius: 500px;
+      width: 132px;
+      height: 132px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      border: 3px solid @brand-base;
+      overflow: hidden;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    > .attachments {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: rgba(0,0,0, 0.3);
+      padding: 7px 5px 7px 10px;
+      color: #fff;
+      > i {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  >a>.caption {
+    padding: @thumbnail-caption-padding-extra-large;
+    color: @thumbnail-circle-caption-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    width: 60%;
+    display: table-cell;
+    vertical-align: middle;
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      color: #fff;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.thumbnail-project {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 0px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+  > .link {
+    display: block;
+    text-decoration: none;
+  }
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  >a> .attachments {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+    padding: 7px 5px 7px 10px;
+    color: #fff;
+    > i {
+      margin-right: 5px;
+    }
+  }
+
+  >a> .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.5);
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding;
+    color: @thumbnail-caption-color;
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 50px;
+    > .thumbnail-project-title {
+      padding: 5px 25px;
+      font-size: 16px;
+      border: 2px solid @brand-base;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    > .lead {
+      font-size: 16px;
+      font-weight: 400;
+      display: block;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+    > .counter {
+      display: inline-block;
+      background: #ee0202;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 7px;
+      font-style: italic;
+      > i.fa-eye {
+        margin-right: 3px;
+      }
+      > i.fa-comment {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .thumbnail {
+    min-height: 155px;
+  }
+  .thumbnail-large {
+    min-height: 155px;
+  }
+  .thumbnail-extra-large {
+    min-height: 325px;
+  }
+  .thumbnail-extra-large .caption {
+    padding: 16px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .thumbnail-project {
+    min-height: 213px;
+  }
+  .thumbnail-project .caption {
+    font-size: 18px;
+    margin-bottom: 0px;
+    > .thumbnail-project-title {
+      margin-bottom: 10px;
+    }
+    > .lead {
+      width: 70%;
+    }
+  }
+  .thumbnail-circle {
+    position: relative;
+    padding: @thumbnail-padding;
+    margin-bottom: 16px;
+    line-height: @line-height-base;
+    background-color: @thumbnail-circle-bg;
+    border: 2px solid @thumbnail-circle-border;
+    border-radius: @thumbnail-border-radius;
+    .transition(border .2s ease-in-out);
+    > .link {
+      display: table;
+      text-decoration: none;
+      > img,
+      a> img {
+        &:extend(.img-responsive);
+        margin-left: 24px;
+        border-radius: 500px;
+        width: 132px;
+        height: 132px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        border: 3px solid @brand-base;
+        overflow: hidden;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      > .attachments {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(0,0,0, 0.3);
+        padding: 7px 5px 7px 10px;
+        color: #fff;
+        > i {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    // Add a hover state for linked versions only
+    a&:hover,
+    a&:focus,
+    a&.active {
+      border-color: @link-color;
+    }
+
+    // Image captions
+    >a>.caption {
+      padding: @thumbnail-caption-padding-extra-large;
+      color: @thumbnail-circle-caption-color;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: left;
+      width: 60%;
+      display: table-cell;
+      vertical-align: middle;
+      > .counter {
+        display: inline-block;
+        background: #ee0202;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 7px;
+        font-style: italic;
+        color: #fff;
+        > i.fa-eye {
+          margin-right: 3px;
+        }
+        > i.fa-comment {
+          margin-left: 5px;
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
+  .thumbnail-circle-horizontal >.link .caption {
+    padding: 24px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    display: block;
+    vertical-align: middle;
+  }
+}
+@media (min-width: @screen-md-min) {
+  .thumbnail {
+    min-height: 160px;
+  }
+  .thumbnail-project .caption {
+    padding: 9px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .thumbnail-extra-large {
+    min-height: 336px;
+  }
+  .thumbnail-circle {
+    min-height: 336px;
+  }
+  .thumbnail-circle > img, .thumbnail-circle > a.link > img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 500px;
+    width: 160px;
+    height: 160px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    border: 3px solid #ee0202;
+    overflow: hidden;
+  }
+  .thumbnail-extra-large >.link > .caption {
+    padding: 24px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .thumbnail-circle-horizontal {
+    min-height: 156px;
+  }
+  .thumbnail-circle-horizontal > img, .thumbnail-circle-horizontal a.link > img {
+    margin-left: 24px;
+    border-radius: 500px;
+    width: 132px;
+    height: 132px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 3px solid @brand-base;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .thumbnail-circle-horizontal >.link > .caption {
+    padding: @thumbnail-caption-padding-extra-large;
+    color: @thumbnail-circle-caption-color;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    width: 60%;
+    display: table-cell;
+  }
+  .thumbnail-project {
+    min-height: 336px;
+  }
+  .thumbnail-large {
+    min-height: 248px;
+  }
+}
+@media (max-width: @screen-xs-max) {
+  .thumbnail {
+    display: block;
+    position: relative;
+    padding: 0px;
+    margin-bottom: 16px;
+    line-height: 1.428571429;
+    background-color: #ffffff;
+    border: 0px solid #dddddd;
+    border-radius: 0px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+    >.link {
+      min-height: 50px;
+      >.caption {
+
+        >br {
+          display: none;
+        }
+      }
+    }
+  }
+  .thumbnail > img, .thumbnail a > img {
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 80px;
+    display: inline-block;
+    float: left;
+  }
+  .thumbnail .caption {
+    padding: 0px;
+    color: #000;
+    position: relative;
+    font-weight: 600;
+    vertical-align: middle;
+    min-height: 60px;
+  }
+  .thumbnail > a > .overlay {
+    display: none;
+  }
+  .thumbnail .caption > .counter {
+    display: none;
+  }
+  .thumbnail > a > .attachments {
+    display: none;
+  }
+  .thumbnail-project {
+    min-height: 129px;
+  }
+  .thumbnail-project .caption {
+    font-size: 16px;
+    margin-bottom: 5px;
+    > .thumbnail-project-title {
+      margin-bottom: 5px;
+    }
+    > .thumbnail-project-text {
+      display: block;
+    }
+    > .lead {
+      width: 100%;
+      display: none;
+    }
+  }
+}
+
+.thumbnail-commercial {
+  display: block;
+  position: relative;
+  padding: @thumbnail-padding;
+  margin-bottom: 16px;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 0px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
+
+  > .link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    text-decoration: none;
+
+    > .image {
+      position: relative;
+      > img,
+      a > img {
+        &:extend(.img-responsive);
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+      }
+      >.overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0, 0.2);
+        background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(135,135,135,0) 47%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(135,135,135,0) 47%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+      }
+      > .counter {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: inline-block;
+        background: #ee0202;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 7px;
+        color: #fff;
+        font-style: italic;
+        > i.fa-eye {
+          margin-right: 3px;
+        }
+        > i.fa-comment {
+          margin-left: 5px;
+          margin-right: 3px;
+        }
+      }
+      .caption {
+        color: @thumbnail-caption-color;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        font-weight: 600;
+      }
+      >.thumbnail-commercial-title {
+        padding: @thumbnail-caption-padding;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        font-weight: 600;
+        color: #fff;
+        display: block;
+        margin-top: 5px;
+      }
+    }
+  }
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+}
+.partition-list {
+  margin-bottom: 16px;
+
+  >a {
+    position: relative;
+    display: block;
+    min-height: 116px;
+    color: @gray-base;
+    text-decoration: none;
+
+    >.partition > .media-thumbnail {
+      position: relative;
+      display: block;
+      >.overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0, 0.3);
+        width: 100%;
+        height: 100%;
+      }
+      >.counter {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        display: inline-block;
+        background: #ee0202;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 7px;
+        font-style: italic;
+        color: #fff;
+      }
+    }
+    >.partition > .media-body {
+
+      >.media-heading {
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 7px;
+      }
+    }
+  }
+}
+.partition > .media-thumbnail {
+  position: relative;
+  display: block;
+  >.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.3);
+    width: 100%;
+    height: 100%;
+  }
+  >.counter {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    display: inline-block;
+    background: #ee0202;
+    padding: 3px 7px;
+    font-size: 11px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    font-style: italic;
+    color: #fff;
+  }
+  >a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+.partition > .media-body {
+
+  >a {
+    display: block;
+    color: @gray-base;
+    text-decoration: none;
+    >.media-heading {
+      font-size: 16px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 7px;
+    }
+  }
+}
+
+
+@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
+
+  .thumbnail {
+    min-height: 144px;
+  }
+  .thumbnail-project {
+    min-height: 199px;
+  }
+  .thumbnail-large {
+    min-height: 144px;
+  }
+  .thumbnail-extra-large {
+    min-height: 304px;
+  }
+  .thumbnail-circle {
+    position: relative;
+    padding: @thumbnail-padding;
+    margin-bottom: 16px;
+    line-height: @line-height-base;
+    background-color: @thumbnail-circle-bg;
+    border: 2px solid @thumbnail-circle-border;
+    border-radius: @thumbnail-border-radius;
+    .transition(border .2s ease-in-out);
+    > .link {
+      display: table;
+      text-decoration: none;
+      > img,
+      a> img {
+        &:extend(.img-responsive);
+        margin-left: 24px;
+        border-radius: 500px;
+        width: 132px;
+        height: 132px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        border: 3px solid @brand-base;
+        overflow: hidden;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      > .attachments {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(0,0,0, 0.3);
+        padding: 7px 5px 7px 10px;
+        color: #fff;
+        > i {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    // Add a hover state for linked versions only
+    a&:hover,
+    a&:focus,
+    a&.active {
+      border-color: @link-color;
+    }
+
+    // Image captions
+    >a>.caption {
+      padding: @thumbnail-caption-padding-extra-large;
+      color: @thumbnail-circle-caption-color;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: left;
+      width: 60%;
+      display: table-cell;
+      vertical-align: middle;
+      > .counter {
+        display: inline-block;
+        background: #ee0202;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 7px;
+        font-style: italic;
+        color: #fff;
+        > i.fa-eye {
+          margin-right: 3px;
+        }
+        > i.fa-comment {
+          margin-left: 5px;
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+  .thumbnail-project .caption {
+    padding: 12px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .thumbnail-project .caption > .thumbnail-project-title {
+    padding: 5px 25px;
+    font-size: 14px;
+    border: 2px solid #ee0202;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .thumbnail-project .caption > .lead {
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+  .thumbnail-circle-horizontal > .link > img, .thumbnail-circle-horizontal > .link a > img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 500px;
+    width: 50px;
+    height: 50px;
+    margin-top: 7px;
+    margin-bottom: 0px;
+    border: 3px solid #ee0202;
+    overflow: hidden;
+  }
+  .thumbnail-circle-horizontal > a > .caption {
+    padding: 5px 10px 7px 10px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  .thumbnail-large .caption {
+    padding: 12px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .thumbnail-extra-large > img, .thumbnail-extra-large a > img {
+    width: 100%;
+  }
+}

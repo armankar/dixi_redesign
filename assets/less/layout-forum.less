@@ -1,0 +1,294 @@
+@import "variables.less";
+.forum-info-box.forum-menu-box {
+  display: block;
+  margin-bottom: 20px;
+  >.forum-info-box-inner {
+    display: block;
+    >.forum-menu-item a {
+      text-transform: uppercase;
+      font-size: 16px;
+      padding: 0px 15px;
+      color: @gray-base;
+      border-left: 1px solid @gray-base;
+      text-decoration: none;
+    }
+    >.forum-menu-item.forum-menu-item-first a {
+      padding: 0px 14px 0px 0px;
+      border-left: 0px solid @gray-base;
+    }
+  }
+}
+.forum-page-navigation {
+  display: block;
+  background: #ebebeb;
+  padding: 12px;
+  >a {
+    color: #1e5089;
+    text-decoration: none;
+    border-left: 1px solid #1e5089;
+    padding: 0px 2px 0px 7px;
+  }
+  >a.forum-page-next {
+    color: @gray-base;
+    text-decoration: none;
+  }
+  >.forum-page-dots {
+    border-left: 1px solid #1e5089;
+    padding: 0px 5px 0px 10px;
+  }
+}
+.forum-table {
+  margin-bottom: 0px;
+}
+.forum-table >thead >tr {
+  background: #2f2f2f;
+  color: #fff;
+  border-top: 1px solid #2f2f2f;
+  >th {
+    border: 1px solid #2f2f2f;
+    font-weight: normal;
+    padding: 8px;
+  }
+  >th.forum-column-replies,
+  >th.forum-column-views,
+  >th.forum-column-lastpost {
+    text-align: center;
+  }
+}
+.forum-table >tbody >tr {
+
+  >td.forum-column-replies,
+  >td.forum-column-views,
+  >td.forum-column-lastpost {
+    text-align: center;
+    padding: 8px;
+  }
+  >td.forum-column-footer-control-checkbox {
+    padding-right: 20px;
+    >.checkbox {
+      position: relative;
+      display: block;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      >input[type="checkbox"] {
+        position: absolute;
+        margin-left: 0px;
+      }
+    }
+  }
+}
+.forum-item-title {
+  display: block;
+  >a {
+    color: #1e5089;
+    text-decoration: none;
+  }
+}
+.forum-table >tfoot tr.forum-column-footer td.forum-column-footer-control {
+  border: 0px solid #dddddd;
+}
+.forum-column-footer-control {
+
+  >.row {
+    margin-bottom: 0px;
+    >.form-group {
+      margin-bottom: 0px;
+      >.forum-column-footer-control-link a {
+        display: inline-block;
+        color: #989ea4;
+        text-decoration: none;
+        line-height: 34px;
+      }
+      >.form-control {
+        background: #ebebeb;
+        border-color: #ebebeb;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+      }
+      >.btn {
+        background: @gray-base;
+        color: #fff;
+        border-color: @gray-base;
+      }
+    }
+  }
+}
+.forum-item-author {
+  display: block;
+}
+.forum-lastpost-date {
+  display: block;
+  text-align: left;
+  color: #989ea4;
+  >a {
+    color: #989ea4;
+    text-decoration: none;
+  }
+}
+.forum-lastpost-title {
+  display: block;
+  text-align: left;
+}
+.table > tbody > tr > td.forum-cell-user {
+  padding: 0px;
+  border-bottom: 1px solid transparent;
+  >.forum-user-info {
+    display: block;
+    padding: 8px;
+    >.forum-user-name {
+      display: block;
+      > noindex a,
+      > a {
+        color: @gray-base;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    }
+    >.forum-user-status,
+    >.forum-user-administrator-status {
+      display: block;
+    }
+    >.forum-user-additional {
+      display: block;
+      >span {
+        display: block;
+      }
+    }
+  }
+}
+.table > tbody > tr > td.forum-cell-post {
+  padding: 0px;
+  border-bottom: 1px solid transparent;
+  >.forum-post-date {
+    display: block;
+    background: #ebebeb;
+    padding: 8px;
+    >.forum-post-number {
+      display: inline-block;
+      vertical-align: middle;
+      float: right;
+      > noindex a,
+      >a {
+        color: @gray-base;
+        text-decoration: none;
+        margin-left: 10px;
+      }
+    }
+    >.forum-post-rating {
+      display: inline-block;
+      vertical-align: middle;
+      float: right;
+    }
+    >span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  >.forum-post-entry {
+    display: block;
+    padding: 8px;
+    >.forum-post-text {
+      display: block;
+      > img,
+      a > img {
+        &:extend(.img-responsive);
+        max-width: 100%;
+        margin-bottom: 7px;
+      }
+      > noindex >a,
+      >a {
+        color: #1e5089;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.table > tbody > tr > td.forum-cell-actions {
+  padding: 0px;
+  >.forum-action-links {
+    display: block;
+    margin: 0px 8px;
+    padding: 8px 0px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+    >span a,
+    >a{
+      color: #989ea4;
+      margin-left: 10px;
+    }
+  }
+}
+.detail-comments-form {
+  display: block;
+  background-color: #dcdddf;
+  padding: 16px;
+  margin: 16px 0;
+  >.row >.form-group >.title {
+    display: inline-block;
+    font-weight: 600;
+    line-height: 34px;
+  }
+  >.row >.form-group >.reg {
+    color: @gray-base;
+    line-height: 34px;
+    display: block;
+    text-align: right;
+  }
+  >.row >.form-group >.login {
+    color: #fff;
+    background-color: @brand-base;
+    text-decoration: none;
+  }
+  >.form-inline >.form-group {
+    margin-bottom: 16px;
+  }
+  >.form-inline >.form-group >.form-control.name {
+    margin-right: 16px;
+  }
+  >.form-inline >.form-group.captcha {
+    width: 100%;
+    >.captcha_image {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    >a.captcha_reload {
+      color: @gray-base;
+      text-decoration: none;
+      line-height: 34px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  >.form-inline >.form-group.area {
+    width: 100%;
+    >textarea {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: @screen-xs-max) {
+
+
+  .table > tbody > tr >td {
+    display: block;
+  }
+  .table > tbody > tr > td.forum-cell-contact {
+    border-bottom: 1px solid transparent;
+  }
+  .table>tbody>tr>td.forum-cell-actions>.forum-action-links {
+    display: block;
+    margin: 0px;
+    padding: 8px;
+    border-top: 0px solid #ddd;
+    text-align: left;
+  }
+  .detail-comments-form>.row>.form-group>.reg {
+    color: #1a1a1a;
+    line-height: 34px;
+    text-align: left;
+    display: block;
+  }
+}

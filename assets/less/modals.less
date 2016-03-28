@@ -1,0 +1,442 @@
+//
+// Modals
+// --------------------------------------------------
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+// Kill the scroll on the body
+.modal-open {
+  overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal;
+  -webkit-overflow-scrolling: touch;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+    .translate(0, -25%);
+    .transition-transform(~"0.3s ease-out");
+  }
+  &.in .modal-dialog { .translate(0, 0) }
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+// Actual modal
+.modal-content {
+  position: relative;
+  background-color: @modal-content-bg;
+  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+  border: 1px solid @modal-content-border-color;
+  border-radius: @border-radius-large;
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+  background-clip: padding-box;
+  // Remove focus outline from opened modal
+  outline: 0;
+}
+
+// Modal background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal-background;
+  background-color: @modal-backdrop-bg;
+  // Fade for backdrop
+  &.fade { .opacity(0); }
+  &.in { .opacity(@modal-backdrop-opacity); }
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.modal-header {
+  padding: @modal-title-padding;
+  border-bottom: 1px solid @modal-header-border-color;
+  &:extend(.clearfix all);
+}
+// Close icon
+.modal-header .close {
+  margin-top: -2px;
+}
+
+// Title text within header
+.modal-title {
+  margin: 0;
+  line-height: @modal-title-line-height;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+  position: relative;
+  padding: @modal-inner-padding;
+}
+
+// Footer (for actions)
+.modal-footer {
+  padding: @modal-inner-padding;
+  text-align: right; // right align buttons
+  border-top: 1px solid @modal-footer-border-color;
+  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+// Scale up the modal
+@media (min-width: @screen-sm-min) {
+  // Automatically set modal's width for larger viewports
+  .modal-dialog {
+    width: @modal-md;
+    margin: 30px auto;
+  }
+  .modal-content {
+    .box-shadow(0 5px 15px rgba(0,0,0,.5));
+  }
+
+  // Modal sizes
+  .modal-sm { width: @modal-sm; }
+}
+
+@media (min-width: @screen-md-min) {
+  .modal-lg { width: @modal-lg; }
+}
+
+.modal.signin {
+  >.modal-dialog > .modal-content {
+    border-radius: 0px;
+    >.modal-body {
+      padding: 0;
+      >button.close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #000;
+        z-index: 99999999;
+        opacity: 1;
+        filter: alpha(opacity=1);
+      }
+      >.nav-tabs.nav-justified > li > a {
+        text-transform: uppercase;
+        color: #a3a3a3;
+        font-family: Arial;
+        font-weight: bold;
+        padding: 15px 0;
+      }
+      >.nav-tabs.nav-justified >li.active > a {
+        border-top: 0px solid #000;
+        border-left: 0px solid #000;
+        border-right: 0px solid #000;
+        border-bottom: 3px solid @brand-base;
+        color: @gray-base;
+      }
+      >.tab-content {
+        padding: 15px;
+        >.tab-pane > form > .form-group > .help-block {
+          font-style: italic;
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        >.tab-pane > form > .form-group > input {
+          border: 2px solid #dcdddf;
+          webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          color: @gray-base;
+        }
+        >.tab-pane > form > .form-group >.row >.col-xs-12.col-sm-8.col-md-8.col-lg-8 > input {
+          border: 2px solid #dcdddf;
+          webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          color: @gray-base;
+        }
+        >.tab-pane > form > .form-group >.row >.col-xs-12.col-sm-4.col-md-4.col-lg-4 > input {
+          border: 2px solid #dcdddf;
+          webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          color: @gray-base;
+        }
+        >.tab-pane > form > .form-group >.row >.col-xs-12.col-sm-4.col-md-4.col-lg-4 > input.capthca-input-number {
+          background: #a3a3a3;
+          border: 2px solid #a3a3a3;
+          webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+          color: #000;
+          padding: 10px 10px;
+          font-weight: 600;
+        }
+        >.tab-pane >.signin-social-net {
+          display: block;
+          padding: 15px 20px;
+          text-align: center;
+          >.signin-social-net-icon {
+            display: block;
+            margin: 10px 0;
+            > a {
+              display: inline-block;
+              margin-left: 5px;
+              margin-right: 5px;
+              padding: 7px 10px;
+              border-radius: 500px;
+            }
+            > a.facebook {
+              padding: 7px 13px;
+              background-color: #3b5997;
+              color: #fff;
+            }
+            >a.facebook:hover {
+              background-color: #3b5997;
+              color: #fff;
+              opacity: 0.89;
+            }
+            > a.twitter {
+              padding: 7px 11px;
+              background-color: #2ba9e3;
+              color: #fff;
+            }
+            > a.twitter:hover {
+              background-color: #2ba9e3;
+              color: #fff;
+              opacity: 0.89;
+            }
+            > a.vk {
+              padding: 7px 10px;
+              background-color: #4c75a3;
+              color: #fff;
+            }
+            > a.vk:hover {
+              background-color: #4c75a3;
+              color: #fff;
+              opacity: 0.89;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.modal.feedback {
+  >.modal-dialog > .modal-content {
+    border-top: 3px solid @brand-base;
+    border-radius: 0px;
+    >.modal-header {
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 0px solid #e5e5e5;
+      >.close {
+        color: @gray-base;
+        opacity: 1;
+        filter: alpha(opacity=1);
+        font-size: 32px;
+        margin-top: -7px;
+      }
+    }
+    > .modal-body {
+      > form > .form-group > input {
+        border: 2px solid #dcdddf;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        color: @gray-base;
+      }
+      > form > .form-group >.row >.col-xs-12.col-sm-6.col-md-6.col-lg-6 > input {
+        border: 2px solid #dcdddf;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        color: @gray-base;
+      }
+      > form > .form-group > textarea {
+        border: 2px solid #dcdddf;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        color: @gray-base;
+      }
+      > form > .form-group > input[type=file] {
+        border: 0px solid #dcdddf;
+        color: @gray-base;
+      }
+      > form >.row >.col-xs-12.col-sm-12.col-md-6.col-lg-6 >.form-group >.row >.col-xs-12.col-sm-8.col-md-8.col-lg-8 > input {
+        border: 2px solid #dcdddf;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        color: @gray-base;
+      }
+      > form >.row >.col-xs-12.col-sm-12.col-md-6.col-lg-6 >.form-group >.row >.col-xs-12.col-sm-4.col-md-4.col-lg-4 > input {
+        background: #a3a3a3;
+        border: 2px solid #a3a3a3;
+        webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+        color: #000;
+        padding: 10px 10px;
+        font-weight: 600;
+      }
+    }
+    >.modal-footer {
+      text-align: left;
+      border-top: 0px solid #e5e5e5;
+      >.row >.col-xs-12.col-sm-12.col-md-6.col-lg-6 >span {
+        display: block;
+        font-size: 16px;
+      }
+      >.row >.col-xs-12.col-sm-12.col-md-6.col-lg-6 > .modal-footer-social-icons {
+        display: block;
+        padding: 5px 0;
+        >a {
+          color: #2f2f2f;
+          border: 1px solid #2f2f2f;
+          padding: 5px 0px;
+          width: 32px;
+          display: inline-block;
+          position: relative;
+          text-align: center;
+          border-radius: 500px;
+        }
+        >a:hover {
+          color: #a3a3a3;
+          border: 1px solid #a3a3a3;
+        }
+      }
+      >.row >.col-xs-12.col-sm-12.col-md-6.col-lg-6 >.modal-feedback-footer-title {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+
+
+  .modal.signin {
+    > .modal-dialog > .modal-content {
+      border-radius: 0px;
+      > .modal-body {
+        padding: 0;
+        > button.close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #000;
+          z-index: 99999999;
+          opacity: 1;
+          filter: alpha(opacity=1);
+        }
+      }
+    }
+  }
+}
+@media (min-width: @screen-ms-min) and (max-width: @screen-ms-max) {
+
+
+  .modal.signin {
+    > .modal-dialog > .modal-content {
+      border-radius: 0px;
+      > .modal-body {
+        padding: 0;
+        > button.close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #000;
+          z-index: 99999999;
+          opacity: 1;
+          filter: alpha(opacity=1);
+        }
+      }
+    }
+  }
+}
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+
+
+  .modal.signin {
+    > .modal-dialog > .modal-content {
+      border-radius: 0px;
+      > .modal-body {
+        padding: 0;
+        > button.close {
+          font-size: 32px;
+          font-weight: normal;
+          text-shadow: 0 0px 0 #ffffff;
+          line-height: 14px;
+          position: absolute;
+          top: 0px;
+          right: -25px;
+          color: #fff;
+          z-index: 99999999;
+          opacity: 1;
+          filter: alpha(opacity=1);
+        }
+      }
+    }
+  }
+}
+@media (min-width: @screen-lg-min) {
+
+
+  .modal.signin {
+    > .modal-dialog > .modal-content {
+      border-radius: 0px;
+      > .modal-body {
+        padding: 0;
+        > button.close {
+          font-size: 32px;
+          font-weight: normal;
+          text-shadow: 0 0px 0 #ffffff;
+          line-height: 14px;
+          position: absolute;
+          top: 0px;
+          right: -25px;
+          color: #fff;
+          z-index: 99999999;
+          opacity: 1;
+          filter: alpha(opacity=1);
+        }
+      }
+    }
+  }
+}
